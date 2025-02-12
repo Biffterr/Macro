@@ -46,8 +46,7 @@ pip install pynput pyautogui keyboard customtkinter CTkListbox
  - Load Macro: Click the "Load" button or press the L key to load a previously saved macro.
  - Reset Macro: Click the "Reset" button or press the D key to clear the recorded events and reset the application.
  
-   ![start](https://github.com/user-attachments/assets/9ac3514e-b8a5-42d4-bd5e-92aa107d457d)
-   ![stop](https://github.com/user-attachments/assets/f8ed8aec-63dc-4ae0-8c73-4f7fbc240f7c)
+   
 
-
+![MACRO](https://github.com/user-attachments/assets/2e937581-a5fe-4f52-a7b3-605b1ba158e5)
 
