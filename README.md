@@ -40,7 +40,8 @@ A simple mouse click recorder and macro player built with Python. This applicati
  - Reset Macro: Click the "Reset" button or press the D key to clear the recorded events and reset the application.
  
    
+![screen](https://github.com/user-attachments/assets/432f7413-e0fc-4dc7-81bc-e43676d6d24d)
+![2](https://github.com/user-attachments/assets/64a18dba-23b8-4323-9093-8813149e69b8)
 
-![update](https://github.com/user-attachments/assets/019c1b44-2631-4d59-91dc-7c21d5d447b0)
 
 
