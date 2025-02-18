@@ -10,6 +10,19 @@ from CTkListbox import *
 import os
 import threading  # Import threading at the top of your file
 import random
+import sys
+
+
+
+def resource_path(relative_path):
+    """ Get the absolute path to the resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 class ToolTip:
     def __init__(self, widget, text):
@@ -304,6 +317,12 @@ if __name__ == "__main__":
     ctk.set_appearance_mode("dark")  # Set the appearance mode to dark
     ctk.set_default_color_theme("green")  # Set the default color theme
     root = ctk.CTk()  # Create a CTk window
+
+    # Set the window icon using a relative path
+    icon_path = resource_path("images\icon.ico")  # Use the resource_path function
+    root.iconbitmap(icon_path)  # For .ico files
+
+
     app = MouseClickRecorderUI(root)
     root.resizable(False, False)  # Lock the application size
     root.mainloop()
