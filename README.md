@@ -1,6 +1,6 @@
 # Basic Macro Recorder made in Python.
 
-  Beginner coder and decided to start with python using the help of AI, Code might be laidout wrong or have/use unnecessary code.
+  Learning python with the help of AI, Code might be laidout wrong or have/use unnecessary code.
 
 # Feel free to use or modify :)
 
@@ -28,13 +28,6 @@ A simple mouse click recorder and macro player built with Python. This applicati
 - **os**: For file path manipulations.
 - **threading**: For running playback in a separate thread to keep the UI responsive.
 
-## Installation
-
-To run this application, you need to have Python installed on your machine. You can install the required modules using pip:
-
-
-pip install pynput pyautogui keyboard customtkinter CTkListbox
-
 
 ## Usage
  - Run the Application: Execute the script to launch the application.
@@ -48,5 +41,6 @@ pip install pynput pyautogui keyboard customtkinter CTkListbox
  
    
 
-![MACRO](https://github.com/user-attachments/assets/2e937581-a5fe-4f52-a7b3-605b1ba158e5)
+![update](https://github.com/user-attachments/assets/019c1b44-2631-4d59-91dc-7c21d5d447b0)
+
 
