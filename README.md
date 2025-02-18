@@ -11,11 +11,12 @@ A simple mouse click recorder and macro player built with Python. This applicati
 ## Features
 
 - **Record Mouse Clicks**: Start and stop recording mouse clicks with a simple button or hotkey.
-- **Playback Macros**: Play back recorded mouse clicks with the option to adjust timing.
-- **Save and Load Macros**: Save recorded macros to a JSON file and load them back for playback.
-- **Recent Files List**: Keep track of recently used macro files for quick access.
+- **Playback Macros**: Play back recorded mouse clicks with optional random delays.
+- **Save and Load Macros**: Save recorded macros to JSON files and load them for playback later.
+- **Current Loaded File List**: Lets you know what your current loaded file is.
+- **Logging**: View a log of playback events, Displayed as Coords (+ Seconds if the delay is enabled).
 - **Hotkey Support**: Use keyboard shortcuts to control recording, playback, saving, and loading of macros.
-- **User  Interface**: Built with `customtkinter` for a modern look and feel.
+- **Playback Delay**:  Option: Enable or disable random delays during playback.
 
 ## Modules Used
 
