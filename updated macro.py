@@ -6,7 +6,7 @@ import pyautogui  # Make sure to install this library
 import keyboard as kb  # For hotkey functionality
 import tkinter as tk
 from tkinter import filedialog
-from CTkListbox import *
+from CTkListbox import CTkListbox
 import os
 import threading  # Import threading at the top of your file
 import random
@@ -24,6 +24,9 @@ def resource_path(relative_path):
 
     return os.path.join(base_path, relative_path)
 
+
+    
+
 class ToolTip:
     def __init__(self, widget, text):
         self.widget = widget
@@ -36,12 +39,14 @@ class ToolTip:
         if self.tooltip_window is not None:
             return
         x = self.widget.winfo_rootx() + 20
-        y = self.widget.winfo_rooty() + 20
+        y = self.widget.winfo_rooty() - 20
         self.tooltip_window = tk.Toplevel(self.widget)
         self.tooltip_window.wm_overrideredirect(True)
         self.tooltip_window.wm_geometry(f"+{x}+{y}")
-        label = tk.Label(self.tooltip_window, text=self.text, background="lightyellow", borderwidth=1, relief="solid")
+        label = tk.Label(self.tooltip_window, text=self.text, background="Green", borderwidth=1, relief="solid")
         label.pack()
+
+        
 
     def hide_tooltip(self, event=None):
         if self.tooltip_window:
@@ -66,29 +71,31 @@ class MouseClickRecorderUI:
         # Start and Stop buttons in the first row
         self.record_button = ctk.CTkButton(master, text="Rec", command=self.start_recording, width=80)
         self.record_button.grid(row=4, column=0, sticky='w', padx=(25, 0), pady=(20, 10))
-        ToolTip(self.record_button, "Hotkey: R")  # Add tooltip for record button
+        ToolTip(self.record_button, "Hotkey: F1")  # Add tooltip for record button
 
         self.stop_button = ctk.CTkButton(master, text="Stop Rec", command=self.stop_recording, width=80)
         self.stop_button.grid(row=4, column=1, sticky='e', padx=(25, 0), pady=(20, 10))
-        ToolTip(self.stop_button, "Hotkey: S")  # Add tooltip for stop button
+        ToolTip(self.stop_button, "Hotkey: F2")  # Add tooltip for stop button
 
         # Play and Reset buttons in the third row
         self.play_button = ctk.CTkButton(master, text="Play", command=self.play_macro, width=80)
         self.play_button.grid(row=6, column=0, sticky='w', padx=(25, 0), pady=(20, 10))
-        ToolTip(self.play_button, "Hotkey: P")  # Add tooltip for play button
+        
 
         self.load_button = ctk.CTkButton(master, text="Load", command=self.load_macro, width=80)
         self.load_button.grid(row=6, column=1, sticky='e', padx=(25, 0), pady=(20, 10))
-        ToolTip(self.load_button, "Hotkey: L")  # Add tooltip for load button
+        
 
         # Save and Reset buttons in the second row
         self.save_button = ctk.CTkButton(master, text="Save", command=self.save_macro, width=80)
         self.save_button.grid(row=5, column=0, sticky='w', padx=(25, 0))
-        ToolTip(self.save_button, "Hotkey: Z")  # Add tooltip for save button
+        
 
         self.reset_button = ctk.CTkButton(master, text="Reset", command=self.reset_macro, width=80)
         self.reset_button.grid(row=5, column=1, sticky='e', padx=(25, 0))
-        ToolTip(self.reset_button, "Hotkey: D")  # Add tooltip for reset button
+        
+
+        
 
         # Recently used macro files list box
         self.recent_files_listbox = CTkListbox(master, height=30)  # Use CTkListbox instead of CTkTextbox
@@ -104,12 +111,9 @@ class MouseClickRecorderUI:
         self.log_textbox.grid(row=10, column=0, columnspan=2, padx=(20, 0), pady=(10, 10))
 
         # Set up hotkeys
-        kb.add_hotkey('R', self.start_recording)  # Press F2 to start recording
-        kb.add_hotkey('S', self.stop_recording)   # Press F3 to stop recording
-        kb.add_hotkey('P', self.play_macro)       # Press F4 to play the recorded macro
-        kb.add_hotkey('Z', self.save_macro)       # Press F5 to save the recorded macro
-        kb.add_hotkey('L', self.load_macro)       # Press F6 to load a macro from a file
-        kb.add_hotkey('D', self.reset_macro)      # Press F7 to reset the macro
+        kb.add_hotkey('F1', self.start_recording)  # Press F2 to start recording
+        kb.add_hotkey('F2', self.stop_recording)   # Press F3 to stop recording
+        
 
         
 
@@ -117,10 +121,34 @@ class MouseClickRecorderUI:
         self.status_label = ctk.CTkLabel(master, text="Status: Idle", text_color="white")
         self.status_label.grid(row=9, column=0, columnspan=2, pady=(10, 0))
 
+
+        # Add a help button
+        self.help_button = ctk.CTkButton(master, text="Help", command=self.show_help, width=40)
+        self.help_button.grid(row=8, column=0, columnspan=2, padx=(10, 0), pady=(10, 10), sticky='w')
+
+    def show_help(self):
+        help_message = (
+            " Click 'Record' to start recording your mouse clicks.\n"
+            " Click 'Stop' to finish recording.\n"
+            " Click 'Play' to replay the recorded clicks.\n"
+            " Use the buttons to save and load your macros.\n\n"
+            "\n"
+            "\n"
+
+            "- **Playback Delay**: Check the 'Playback Delay' box to add random delays between clicks when playing back. "
+            "This makes the playback feel more natural.\n"
+            "\n"
+
+            "- **Recent Files List**: Shows your current saved or loaded macro\n"
+            "\n"
+            "- **Log Box**: The log box shows messages about what you’ve done, like starting/stopping recording, saving/loading macros, and playback details. "
+            "It helps you keep track of your actions."
+        )
+        tk.messagebox.showinfo("Help", help_message)
+
     def log_click(self, message):
         self.log_textbox.configure(state=tk.NORMAL)  # Enable the textbox for editing
-        self.log_textbox.insert(tk.END, message + "\n")  # Insert log message into the textbox
-        self.log_textbox.see(tk.END)  # Scroll to the end of the textbox
+        self.log_textbox.insert("1.0", message + "\n")  # Insert log message at the top
         self.log_textbox.configure(state=tk.DISABLED)  # Disable the textbox again
 
     def play_macro(self):
@@ -195,9 +223,7 @@ class MouseClickRecorderUI:
         self.log_click("Reset macro")  # Log the reset action
         print("Macro reset.")  # Debug print
 
-    def log_click(self, message):
-        self.log_textbox.configure(state=tk.NORMAL)  # Enable the textbox for editing
-        self.log_textbox.insert("1.0", message + "\n")  # Insert log message at the top
+    
         
         # Limit the number of lines to 10
         lines = self.log_textbox.get("1.0", tk.END).splitlines()
@@ -220,12 +246,19 @@ class MouseClickRecorderUI:
             self.master.protocol("WM_DELETE_WINDOW", self.on_close)
 
     def on_close(self):
-        # Stop the mouse listener if it's running
+        # Stop any running threads
         if self.recorder.mouse_listener is not None:
-            self.recorder.stop_recording()  # Ensure recording is stopped
-        self.master.quit()  # Stop the main loop
-        self.master.destroy()  # Close the application
+            self.recorder.stop_recording()
 
+        if hasattr(self, 'playback_thread') and self.playback_thread.is_alive():
+            self.playback_thread.join()
+
+        self.master.quit()
+        self.master.destroy()
+
+
+
+    
 
 class MouseClickRecorder:
     def __init__(self, log_function):
