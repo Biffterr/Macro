@@ -5,9 +5,6 @@
 # Feel free to use or modify :)
 
 
-A simple mouse click recorder and macro player built with Python. This application allows users to record mouse clicks, save them as macros, and play them back at a later time. It features a user-friendly interface and supports hotkeys for quick access to functionalities.
-
-
 ## Features
 
 - **Record Mouse Clicks**: Start and stop recording mouse clicks with a simple button or hotkey.
@@ -31,14 +28,13 @@ A simple mouse click recorder and macro player built with Python. This applicati
 
 
 ## Usage
- - Run the Application: Execute the script to launch the application.
 
- - Start Recording: Click the "Rec" button or press the R key to start recording mouse clicks.
- - Stop Recording: Click the "Stop Rec" button or press the S key to stop recording.
- - Play Macro: Click the "Play" button or press the P key to play back the recorded clicks.
- - Save Macro: Click the "Save" button or press the Z key to save the recorded macro to a file.
- - Load Macro: Click the "Load" button or press the L key to load a previously saved macro.
- - Reset Macro: Click the "Reset" button or press the D key to clear the recorded events and reset the application.
+ - Start Recording: Click the "Rec" button or press the F1 key to start recording mouse clicks.
+ - Stop Recording: Click the "Stop Rec" button or press the F2 key to stop recording.
+ - Play Macro: Click the "Play" button. 
+ - Save Macro: Click the "Save" button. 
+ - Load Macro: Click the "Load" button.
+ - Reset Macro: Click the "Reset" button. 
  
    
 ![screen](https://github.com/user-attachments/assets/432f7413-e0fc-4dc7-81bc-e43676d6d24d)
