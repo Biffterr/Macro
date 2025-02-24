@@ -12,7 +12,7 @@
 - **Save and Load Macros**: Save recorded macros to JSON files and load them for playback later.
 - **Current Loaded File List**: Lets you know what your current loaded file is.
 - **Logging**: View a log of playback events, Displayed as Coords (+ Seconds if the delay is enabled).
-- **Hotkey Support**: Use keyboard shortcuts to control recording, playback, saving, and loading of macros.
+- **Hotkey Support**: Use keyboard shortcuts to control recording and stop recording.
 - **Playback Delay**:  Option: Enable or disable random delays during playback.
 
 ## Modules Used
